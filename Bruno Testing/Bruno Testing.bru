@@ -1,0 +1,23 @@
+meta {
+  name: Bruno Testing
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/create
+  body: json
+  auth: none
+}
+
+body:json {
+  
+    {
+      "name": "Oil Painting - Sunset Landscape",
+      "category": "painting",
+      "description": "Original oil painting capturing the beauty of a sunset landscape.",
+      "price": 199.99,
+      "image": "https://example.com/images/oil_painting.jpg"
+    }
+  
+}
