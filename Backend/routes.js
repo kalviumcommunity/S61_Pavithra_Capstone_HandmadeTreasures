@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const productModel = require('./Schema.js');
+const productModel = require('./schema.js');
 
 // Create a new product
 router.post('/create', async (req, res) => {
