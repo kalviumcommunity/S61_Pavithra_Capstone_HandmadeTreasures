@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const route = require('./routes');
+const userRoute=require('./User/userRoutes');
 
 connectDB();
 const port = 3000;
@@ -17,6 +19,9 @@ app.get('/', (req, res) => {
         database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
     })
 });
+
+app.use('/api', route);
+app.use('/admin',userRoute);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
