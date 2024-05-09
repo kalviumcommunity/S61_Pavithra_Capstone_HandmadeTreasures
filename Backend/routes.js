@@ -5,8 +5,8 @@ const productModel = require('./schema.js');
 // Create a new product
 router.post('/create', async (req, res) => {
     try {
-        const { name, category, description, price, image } = req.body;
-        const product = new productModel({ name, category, description, price, image });
+        const { name, category, subcategory, description, price, image } = req.body;
+        const product = new productModel({ name, category, subcategory, description, price, image });
         const newProduct = await product.save();
         res.status(201).json({ message: "Product created successfully", product: newProduct });
     } catch (error) {
