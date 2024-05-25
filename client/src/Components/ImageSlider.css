@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300&family=Pacifico&family=Signika:wght@300..700&display=swap');
+.image-slider {
+    width: 1275px; 
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+
+}
+
+.slider-image {
+    width: 100%;
+    height: auto; 
+    display: block;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%; 
+    left: 25%; 
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; 
+    background-color: rgba(0, 0, 0, 0.5); /* Add background color for better readability */
+    font-family: "Signika", sans-serif;
+}
+
+.large-text {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "Signika", sans-serif; 
+}
+
+h3.large-text {
+    margin-bottom: 13px;
+    margin-top: 0px;
+}
+
+.small-text {
+    font-size: 18px;
+    font-family: "Signika", sans-serif; 
+}
+
+.left-arrow,
+.right-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 20px;
+    z-index: 1;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+}

@@ -1,0 +1,61 @@
+.crafts-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.crafts-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.crafts-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.craft-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33% - 40px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.craft-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.craft-item h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+.craft-item p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.craft-item:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .craft-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .craft-item {
+        width: 100%;
+    }
+}
