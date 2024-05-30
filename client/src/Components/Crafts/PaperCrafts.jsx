@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const PaperCrafts = () => {
     const [paperCrafts, setPaperCrafts] = useState([]);
@@ -37,11 +38,11 @@ const PaperCrafts = () => {
     console.log(paperCrafts);
 
     return (
-        <div className="paper-crafts-container">
+        <div className="container">
             <h1>Paper Crafts</h1>
-            <div className="paper-crafts-list">
+            <div className="list">
                 {paperCrafts.map((item) => (
-                    <div key={item._id} className="paper-craft-item">
+                    <div key={item._id} className="item">
                         <img src={item.image} alt={item.name} />
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
