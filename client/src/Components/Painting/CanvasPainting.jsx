@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const CanvasPainting = () => {
     const [canvasPaintings, setCanvasPaintings] = useState([]);
@@ -37,11 +38,11 @@ const CanvasPainting = () => {
     console.log(canvasPaintings);
 
     return (
-        <div className="canvas-paintings-container">
+        <div className="container">
             <h1>Canvas Paintings</h1>
-            <div className="canvas-paintings-list">
+            <div className="list">
                 {canvasPaintings.map((product) => (
-                    <div key={product._id} className="canvas-painting-item">
+                    <div key={product._id} className="item">
                         <img src={product.image} alt={product.name} />
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>

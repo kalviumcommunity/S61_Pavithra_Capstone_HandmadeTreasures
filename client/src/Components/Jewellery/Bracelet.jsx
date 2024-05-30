@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const Bracelet = () => {
     const [bracelets, setBracelets] = useState([]);
@@ -37,11 +38,11 @@ const Bracelet = () => {
     console.log(bracelets);
 
     return (
-        <div className="bracelets-container">
+        <div className="container">
             <h1>Bracelet Products</h1>
-            <div className="bracelets-list">
+            <div className="list">
                 {bracelets.map((product) => (
-                    <div key={product._id} className="bracelets-item">
+                    <div key={product._id} className="item">
                         <img src={product.image} alt={product.name} />
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>

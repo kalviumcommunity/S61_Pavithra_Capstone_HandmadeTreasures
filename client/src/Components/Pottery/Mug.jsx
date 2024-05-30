@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const Mug = () => {
     const [mugs, setMugs] = useState([]);
@@ -37,11 +38,11 @@ const Mug = () => {
     console.log(mugs);
 
     return (
-        <div className="mugs-container">
+        <div className="container">
             <h1>Mugs</h1>
-            <div className="mugs-list">
+            <div className="list">
                 {mugs.map((product) => (
-                    <div key={product._id} className="mug-item">
+                    <div key={product._id} className="item">
                         <img src={product.image} alt={product.name} />
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
