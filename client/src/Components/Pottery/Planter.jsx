@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const Planter = () => {
     const [planters, setPlanters] = useState([]);
@@ -37,11 +38,11 @@ const Planter = () => {
     console.log(planters);
 
     return (
-        <div className="planters-container">
+        <div className="container">
             <h1>Planters</h1>
-            <div className="planters-list">
+            <div className="list">
                 {planters.map((product) => (
-                    <div key={product._id} className="planter-item">
+                    <div key={product._id} className="item">
                         <img src={product.image} alt={product.name} />
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>

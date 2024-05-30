@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import image1 from '../assets/Butterfly.png';
@@ -9,6 +9,7 @@ import searchIcon from '../assets/Search.png';
 
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
+    // const { favorites } = useContext(FavoritesContext);
 
     const handleDropdownToggle = (category) => {
         setOpenDropdown(openDropdown === category ? null : category);
@@ -97,6 +98,9 @@ const Navbar = () => {
                         )}
                     </div>
                     <Link to="/favorites" className="nav-link favorites-icon">♡</Link>
+                    {/* <Link to="/favorites" className="nav-link favorites-icon">
+                        ♡ {favorites.length > 0 && <span className="favorites-count">{favorites.length}</span>}
+                    </Link> */}
                 </div>
             </nav>
         </>

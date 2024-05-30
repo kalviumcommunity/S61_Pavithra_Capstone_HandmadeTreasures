@@ -62,7 +62,7 @@ const Home = () => {
             <button className="left-arrow" onClick={handlePrev}>
                 &lt;
             </button>
-            <div className="image-container">
+            <div className="image-holder">
                 <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="slider-image" />
                 <div className="image-text">{images[currentIndex].text}</div>
             </div>

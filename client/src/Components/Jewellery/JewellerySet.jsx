@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const JewellerySet = () => {
     const [jewellerySets, setJewellerySets] = useState([]);
@@ -37,14 +38,17 @@ const JewellerySet = () => {
     console.log(jewellerySets);
 
     return (
-        <div className="jewellery-sets-container">
+        <div className="container">
             <h1>Jewellery Sets</h1>
-            <div className="jewellery-sets-list">
+            <div className="list">
                 {jewellerySets.map((product) => (
-                    <div key={product._id} className="jewellery-sets-item">
-                        <img src={product.image} alt={product.name} />
+                    <div key={product._id} className="item">
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
+                        </div>
                         <h2>{product.name}</h2>
-                        <p>{product.description}</p>
+                        {/* <p>{product.description}</p> */}
                         <p>Price: ${product.price}</p>
                     </div>
                 ))}

@@ -11,7 +11,7 @@ const productSchema = new Schema({
     },
     subcategory: {
         type: String,
-        enum: ["Candles", "Soap", "PaperCrafts", "WoodenItems", "Weaving", "Necklace", "Earring", "Bangles", "Bracelet", "JewellerySet", "CanvasPainting", "PaperPainting", "OilPainting", "WatercolorPainting", "Mug", "Bowl", "Planter", "Vase"],
+        enum: ["Candles", "Soap", "PaperCrafts", "WoodenItems", "Necklace", "Earring", "Bangles", "JewellerySet", "CanvasPainting", "PaperPainting", "OilPainting", "WatercolorPainting", "Mug", "Bowl", "Planter", "Vase"],
     },
     description: { type: String, required: true },
     price: { type: Number, required: true }
