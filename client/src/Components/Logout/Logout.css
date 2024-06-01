@@ -77,7 +77,7 @@
 }
 
 /* Button styling */
-.logout-button {
+.signup-button {
     width: 100%;
     padding: 10px;
     background-color: #C38DFA;
@@ -91,7 +91,7 @@
 }
 
 /* Button hover effect */
-.logout-button:hover {
+.signup-button:hover {
     background-color: #C38DFA;
     background-color: #84dbef;
 }
@@ -102,3 +102,4 @@
         padding: 20px;
     }
 }
+
