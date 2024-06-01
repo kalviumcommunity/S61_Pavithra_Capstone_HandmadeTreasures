@@ -62,8 +62,7 @@ const Earring = () => {
                             <span className="heart-icon">♡</span>
                         </div>
                         <h2>{product.name}</h2>
-                        {/* <p>{product.description}</p> */}
-                        <p>Price: ₹{product.price}</p>
+                        <p>Price: ₹ {product.price}</p>
                     </div>
                 ))}
             </div>
@@ -81,7 +80,6 @@ const Earring = () => {
                                 <p className="drawer-details"><strong>Price:</strong> ₹ {selectedProduct.price}</p>
                                 <p className="drawer-details"><strong>Product details:</strong> {selectedProduct.description}</p>
                                 <div className="drawer-buttons">
-                                    {/* <button>Add To Cart</button> */}
                                     <button onClick={() => addToCart(selectedProduct)}>Add To Cart</button>
                                     <button>Buy Now</button>
                                 </div>

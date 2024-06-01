@@ -92,6 +92,7 @@
 
 /* Button hover effect */
 .signup-button:hover {
+    background-color: #C38DFA;
     background-color: #84dbef;
 }
 
@@ -101,3 +102,4 @@
         padding: 20px;
     }
 }
+

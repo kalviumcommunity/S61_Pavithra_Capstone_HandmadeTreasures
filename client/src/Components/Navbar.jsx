@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerCloseButton, ChakraProvider } from "@chakra-ui/react";
@@ -110,7 +110,7 @@ const Navbar = () => {
                         )}
                     </div>
                     <Link to="/favorites" className="nav-link favorites-icon">♡</Link>
-                </div>               
+                </div>
             </nav>
             <ChakraProvider>
                 <Drawer placement="right" onClose={toggleCart} isOpen={isCartOpen} size="md">
@@ -145,4 +145,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

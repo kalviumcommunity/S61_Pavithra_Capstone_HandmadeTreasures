@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/Components.css';
+
 const Candles = () => {
     const [candles, setCandles] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,8 +35,6 @@ const Candles = () => {
         return <div>{error}</div>;
     }
 
-    console.log(candles);
-
     return (
         <div className="container">
             <h1>Candles</h1>
@@ -43,7 +42,7 @@ const Candles = () => {
                 {candles.map((candle) => (
                     <div key={candle._id} className="item">
                         <div className="image-container">
-                            <img src={product.image} alt={product.name} />
+                            <img src={candle.image} alt={candle.name} />
                             <span className="heart-icon">♡</span>
                         </div>
                         <h2>{candle.name}</h2>

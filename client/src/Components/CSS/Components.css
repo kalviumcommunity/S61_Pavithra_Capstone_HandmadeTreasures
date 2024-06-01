@@ -27,6 +27,7 @@
 
 .image-container {
     position: relative;
+    position: relative; /* Add relative positioning */
     width: 90%;
     height: 62%;
     margin: 0 auto 15px auto;
@@ -132,4 +133,15 @@
 .drawer-buttons button:hover {
     background-color: #FFDA1C;
     color: #000000;
+    font-size: 24px; 
+    font-weight: bold;
+    color: black; 
+    background-color: rgba(240, 199, 244, 0.7); 
+    border-radius: 100%; /* Optional: round background */
+    padding: 5px; /* Optional: space around the heart icon */
+    transition: transform 0.1s; /* Add transition for the heart icon */
+}
+
+.heart-icon:hover {
+    transform: scale(1.2); /* Slightly enlarge the heart icon on hover */
 }

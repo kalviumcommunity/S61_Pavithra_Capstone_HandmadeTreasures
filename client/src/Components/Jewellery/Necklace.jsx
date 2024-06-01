@@ -74,7 +74,6 @@ const Necklace = () => {
                                 <p className="drawer-details"><strong>Price:</strong> ₹ {selectedProduct.price}</p>
                                 <p className="drawer-details"><strong>Product details:</strong> {selectedProduct.description}</p>
                                 <div className="drawer-buttons">
-                                    {/* <button>Add To Cart</button> */}
                                     <button onClick={() => addToCart(selectedProduct)}>Add To Cart</button>
                                     <button>Buy Now</button>
                                 </div>

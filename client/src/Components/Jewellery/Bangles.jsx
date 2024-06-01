@@ -16,11 +16,8 @@ const Bangles = () => {
         const fetchBangles = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/read');
-                // console.log(response.data);
-
                 // Filter out entities that belong to the "Bangles" subcategory
                 const banglesData = response.data.products.filter(item => item.subcategory === 'Bangles');
-
                 setBangles(banglesData);
                 setLoading(false);
             } catch (error) {
@@ -49,8 +46,6 @@ const Bangles = () => {
         return <div>{error}</div>;
     }
 
-    console.log(bangles);
-
     return (
         <div className="container">
             <h1>Bangles Products</h1>
@@ -62,7 +57,6 @@ const Bangles = () => {
                             <span className="heart-icon">♡</span>
                         </div>
                         <h2>{product.name}</h2>
-                        {/* <p>{product.description}</p> */}
                         <p>Price: ₹ {product.price}</p>
                     </div>
                 ))}
@@ -81,7 +75,6 @@ const Bangles = () => {
                                 <p className="drawer-details"><strong>Price:</strong> ₹ {selectedProduct.price}</p>
                                 <p className="drawer-details"><strong>Product details:</strong> {selectedProduct.description}</p>
                                 <div className="drawer-buttons">
-                                    {/* <button>Add To Cart</button> */}
                                     <button onClick={() => addToCart(selectedProduct)}>Add To Cart</button>
                                     <button>Buy Now</button>
                                 </div>

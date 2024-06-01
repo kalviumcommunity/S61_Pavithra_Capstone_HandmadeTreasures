@@ -1,6 +1,9 @@
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 // import '../CSS/Components/css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../CSS/Components.css'
 
 // const Bracelet = () => {
 //     const [bracelets, setBracelets] = useState([]);
@@ -56,5 +59,22 @@
 //         </div>
 //     );
 // };
+
+    // return (
+    //     <div className="container">
+    //         <h1>Bracelet Products</h1>
+    //         <div className="list">
+    //             {bracelets.map((product) => (
+    //                 <div key={product._id} className="item">
+    //                     <img src={product.image} alt={product.name} />
+    //                     <h2>{product.name}</h2>
+    //                     <p>{product.description}</p>
+    //                     <p>Price: ${product.price}</p>
+    //                 </div>
+    //             ))}
+    //         </div>
+    //     </div>
+    // );
+
 
 // export default Bracelet;

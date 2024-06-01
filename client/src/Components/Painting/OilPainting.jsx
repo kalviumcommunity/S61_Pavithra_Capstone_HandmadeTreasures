@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const OilPainting = () => {
     const [oilPaintings, setOilPaintings] = useState([]);
@@ -47,6 +48,7 @@ const OilPainting = () => {
                             <img src={product.image} alt={product.name} />
                             <span className="heart-icon">♡</span>
                         </div>
+                        <img src={product.image} alt={product.name} />
                         <h2>{product.name}</h2>
                         {/* <p>{product.description}</p> */}
                         <p>Price: ${product.price}</p>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/Components.css'
 
 const Soap = () => {
     const [soaps, setSoaps] = useState([]);
@@ -37,11 +38,11 @@ const Soap = () => {
     console.log(soaps);
 
     return (
-        <div className="soaps-container">
+        <div className="container">
             <h1>Soap</h1>
-            <div className="soaps-list">
+            <div className="list">
                 {soaps.map((soap) => (
-                    <div key={soap._id} className="soap-item">
+                    <div key={soap._id} className="item">
                         <img src={soap.image} alt={soap.name} />
                         <h2>{soap.name}</h2>
                         <p>{soap.description}</p>
