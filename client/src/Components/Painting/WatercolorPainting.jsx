@@ -37,14 +37,18 @@ const WatercolorPainting = () => {
     console.log(watercolorPaintings);
 
     return (
-        <div className="watercolor-paintings-container">
+        <div className="container">
             <h1>Watercolor Paintings</h1>
-            <div className="watercolor-paintings-list">
+            <div className="list">
                 {watercolorPaintings.map((product) => (
-                    <div key={product._id} className="watercolor-painting-item">
-                        <img src={product.image} alt={product.name} />
+                    <div key={product._id} className="-item">
+                        {/* <img src={product.image} alt={product.name} /> */}
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
+                        </div>
                         <h2>{product.name}</h2>
-                        <p>{product.description}</p>
+                        {/* <p>{product.description}</p> */}
                         <p>Price: ${product.price}</p>
                     </div>
                 ))}

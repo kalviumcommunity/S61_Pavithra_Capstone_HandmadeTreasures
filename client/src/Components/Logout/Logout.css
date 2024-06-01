@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+
+.logout-page {
+    height: 85vh;
+    width: 100%;
+    background-image: url('../../assets/pots.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: 'Klee One', cursive;
+}
+
+.logout-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.logout-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    padding: 8px;
+}
+
+/* Styling for the logout form */
+.logout-form {
+    background: rgba(246, 243, 243, 0.9);
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    max-width: 380px; /* Max width of form */
+    width: 90%; /* Full width */
+}
+
+/* Form heading */
+.logout-form h2 {
+    margin-top: 0px;
+    margin-bottom: 10px; /* Space below heading */
+    text-align: center; /* Centered text */
+    font-size: 24px; /* Font size */
+    color: #333; /* Font color */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 10px; /* Space below each form group */
+}
+
+/* Label styling */
+.form-group label {
+    display: block; /* Block display */
+    margin-bottom: 8px; /* Space below label */
+    font-size: 15px; /* Font size */
+    color: black; /* Font color */
+}
+
+/* Input field styling */
+.form-group input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Button styling */
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #C38DFA;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 7px;
+}
+
+/* Button hover effect */
+.signup-button:hover {
+    background-color: #84dbef;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .logout-form {
+        padding: 20px;
+    }
+}

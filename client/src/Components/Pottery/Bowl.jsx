@@ -37,14 +37,18 @@ const Bowl = () => {
     console.log(bowls);
 
     return (
-        <div className="bowls-container">
+        <div className="container">
             <h1>Bowls</h1>
-            <div className="bowls-list">
+            <div className="list">
                 {bowls.map((product) => (
-                    <div key={product._id} className="bowl-item">
-                        <img src={product.image} alt={product.name} />
+                    <div key={product._id} className="item">
+                        {/* <img src={product.image} alt={product.name} /> */}
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
+                        </div>
                         <h2>{product.name}</h2>
-                        <p>{product.description}</p>
+                        {/* <p>{product.description}</p> */}
                         <p>Price: ${product.price}</p>
                     </div>
                 ))}

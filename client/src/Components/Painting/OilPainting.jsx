@@ -37,14 +37,18 @@ const OilPainting = () => {
     console.log(oilPaintings);
 
     return (
-        <div className="oil-paintings-container">
+        <div className="container">
             <h1>Oil Paintings</h1>
-            <div className="oil-paintings-list">
+            <div className="list">
                 {oilPaintings.map((product) => (
-                    <div key={product._id} className="oil-painting-item">
-                        <img src={product.image} alt={product.name} />
+                    <div key={product._id} className="item">
+                        {/* <img src={product.image} alt={product.name} /> */}
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
+                        </div>
                         <h2>{product.name}</h2>
-                        <p>{product.description}</p>
+                        {/* <p>{product.description}</p> */}
                         <p>Price: ${product.price}</p>
                     </div>
                 ))}

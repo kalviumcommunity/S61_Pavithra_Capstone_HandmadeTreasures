@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import '../CSS/Components.css';
 const Candles = () => {
     const [candles, setCandles] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -37,19 +37,22 @@ const Candles = () => {
     console.log(candles);
 
     return (
-            <div className="candles-container">
-                <h1>Candles</h1>
-                <div className="candles-list">
-                    {candles.map((candle) => (
-                        <div key={candle._id} className="candle-item">
-                            <img src={candle.image} alt={candle.name} />
-                            <h2>{candle.name}</h2>
-                            <p>{candle.description}</p>
-                            <p>Price: ${candle.price}</p>
+        <div className="container">
+            <h1>Candles</h1>
+            <div className="list">
+                {candles.map((candle) => (
+                    <div key={candle._id} className="item">
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
                         </div>
-                    ))}
-                </div>
+                        <h2>{candle.name}</h2>
+                        <p>{candle.description}</p>
+                        <p>Price: ${candle.price}</p>
+                    </div>
+                ))}
             </div>
+        </div>
     );
 };
 

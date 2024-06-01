@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
+import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerCloseButton, ChakraProvider } from "@chakra-ui/react";
 import './Navbar.css';
 import image1 from '../assets/Butterfly.png';
 import image2 from '../assets/Handmade logo.png';
@@ -9,11 +11,22 @@ import searchIcon from '../assets/Search.png';
 
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
+    const { cartItems, removeFromCart } = useContext(CartContext);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     const handleDropdownToggle = (category) => {
         setOpenDropdown(openDropdown === category ? null : category);
     };
 
+    const toggleCart = () => {
+        setIsCartOpen(!isCartOpen);
+    };
+
+    const handleBuyNow = (item) => {
+        // Logic for buying now, e.g., redirect to checkout page with the item
+        console.log("Buying now:", item);
+    };
+    
     return (
         <>
             <nav className="navbar">
@@ -34,9 +47,9 @@ const Navbar = () => {
                         <Link to="/login" className="login-icon">
                             <img src={loginIcon} alt="Login" />
                         </Link>
-                        <Link to="/cart" className="cart-icon">
+                        <div className="cart-icon" onClick={toggleCart}>
                             <img src={cartIcon} alt="Cart" />
-                        </Link>
+                        </div>
                     </div>
                 </div>
                 <hr />
@@ -97,8 +110,36 @@ const Navbar = () => {
                         )}
                     </div>
                     <Link to="/favorites" className="nav-link favorites-icon">♡</Link>
-                </div>
+                </div>               
             </nav>
+            <ChakraProvider>
+                <Drawer placement="right" onClose={toggleCart} isOpen={isCartOpen} size="md">
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Your Cart</DrawerHeader>
+                        <DrawerBody>
+                            {cartItems.length === 0 ? (
+                                <p>Your cart is empty</p>
+                            ) : (
+                                <ul className="cart-list">
+                                    {cartItems.map((item) => (
+                                        <li key={item._id} className="cart-item">
+                                            <img src={item.image} alt={item.name} className="cart-item-image" />
+                                            <div className="cart-item-details">
+                                                <h2>{item.name}</h2>
+                                                <p>Price: ₹ {item.price}</p>
+                                                <button onClick={() => removeFromCart(item)}>Remove</button>
+                                                <button onClick={() => handleBuyNow(item)} className="buy-now-button">Buy Now</button>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+            </ChakraProvider>
         </>
     );
 };

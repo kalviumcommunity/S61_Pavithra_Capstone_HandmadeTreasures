@@ -1,0 +1,22 @@
+meta {
+  name: POST
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "image": "https://cdn11.bigcommerce.com/s-x49po/images/stencil/800w/products/36258/49456/Urbanstreetwithbuildings_na_550_699_2828X4000_0__76865.1544435506.jpg?c=2",
+      "name": "Urban Street With Buildings-Canvas Art Print",
+      "category": "painting",
+      "subcategory": "CanvasPainting",
+      "description": "A dynamic canvas art print of an urban street with buildings, showcasing the vibrancy and energy of city life.",
+      "price": 947
+    }
+}
