@@ -26,7 +26,6 @@
 }
 
 .image-container {
-    position: relative; 
     width: 90%;
     height: 62%;
     margin: 0 auto 15px auto;
@@ -62,12 +61,79 @@
     position: absolute;
     bottom: 0px;
     right: 10px;
-    font-size: 24px; 
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(240, 199, 244, 0.7);
+    border-radius: 100%;
+    padding: 5px;
+    transition: transform 0.1s;
+}
+
+.heart-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Drawer styles */
+.drawer-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'Klee One', cursive;
+    text-align: center;
+}
+
+.drawer-image-container {
+    position: relative;
+    width: 40%;
+    height: 62%;
+    margin: 0 auto 15px auto;
+}
+
+.drawer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+    /* border: 1px solid black; */
+}
+
+.drawer-details {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 15px;
+    font-family: 'Klee One', cursive;
+    text-align: center;
+}
+
+.drawer-buttons {
+    display: flex;
+    justify-content: center;
+    font-family: 'Klee One', cursive;
+    text-align: center;
+}
+
+.drawer-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #C38DFA;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.drawer-buttons button:hover {
+    background-color: #FFDA1C;
+    color: #000000;
+    font-size: 16px; 
     font-weight: bold;
     color: black; 
-    background-color: rgba(240, 199, 244, 0.7); 
-    border-radius: 100%; /* Optional: round background */
-    padding: 5px; /* Optional: space around the heart icon */
     transition: transform 0.1s; /* Add transition for the heart icon */
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { CartProvider } from './Components/CartContext';
 import Crafts from './Components/Crafts';
 import Navbar from './Components/Navbar';
 import Home from './Components/ImageSlider';
@@ -11,7 +12,7 @@ import Weaving from './Components/Crafts/Weaving';
 import Necklace from './Components/Jewellery/Necklace';
 import Earring from './Components/Jewellery/Earring';
 import Bangles from './Components/Jewellery/Bangles';
-import Bracelet from './Components/Jewellery/Bracelet';
+// import Bracelet from './Components/Jewellery/Bracelet';
 import JewellerySet from './Components/Jewellery/JewellerySet';
 import Mug from './Components/Pottery/Mug';
 import Bowl from './Components/Pottery/Bowl';
@@ -34,7 +35,8 @@ const App = () => {
   const hideHomeAndMainContainer = isLoginPage || isLogoutPage;
 
   return (
-    <>
+    // <>
+    <CartProvider>
       <Navbar />
       {/* {!isLoginPage && <Home />} */}
       {!hideHomeAndMainContainer && <Home />}
@@ -48,6 +50,7 @@ const App = () => {
         <Route path="/jewellery/necklace" element={<Necklace />} />
         <Route path="/jewellery/earring" element={<Earring />} />
         <Route path="/jewellery/bangles" element={<Bangles />} />
+        {/* <Route path="/jewellery/bracelet" element={<Bracelet />} /> */}
         <Route path="/jewellery/bracelet" element={<Bracelet />} />
         <Route path="/jewellery/jewelleryset" element={<JewellerySet />} />
         <Route path="/pottery/mug" element={<Mug />} />
@@ -64,7 +67,9 @@ const App = () => {
       {/* {!isLoginPage && <MainContainer />} */}
       {!hideHomeAndMainContainer && <MainContainer />}
       <Footer />
-    </>
+    {/* </> */}
+    </CartProvider>
+    // </>
   );
 };
 
