@@ -1,9 +1,9 @@
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 // import '../CSS/Components/css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../CSS/Components.css'
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import '../CSS/Components.css'
 
 // const Bracelet = () => {
 //     const [bracelets, setBracelets] = useState([]);
