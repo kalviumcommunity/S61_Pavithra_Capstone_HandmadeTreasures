@@ -203,7 +203,7 @@
 }
 
 .buy-now-button {
-    background-color: #008CBA;
+    /* background-color: #008CBA; */
     color: white;
     border: none;
     padding: 5px 10px;
