@@ -51,7 +51,7 @@ const App = () => {
         <Route path="/jewellery/earring" element={<Earring />} />
         <Route path="/jewellery/bangles" element={<Bangles />} />
         {/* <Route path="/jewellery/bracelet" element={<Bracelet />} /> */}
-        <Route path="/jewellery/bracelet" element={<Bracelet />} />
+        {/* <Route path="/jewellery/bracelet" element={<Bracelet />} /> */}
         <Route path="/jewellery/jewelleryset" element={<JewellerySet />} />
         <Route path="/pottery/mug" element={<Mug />} />
         <Route path="/pottery/bowl" element={<Bowl />} />
