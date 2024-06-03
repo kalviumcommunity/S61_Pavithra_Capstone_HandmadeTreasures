@@ -26,8 +26,6 @@
 }
 
 .image-container {
-    position: relative;
-    position: relative; /* Add relative positioning */
     width: 90%;
     height: 62%;
     margin: 0 auto 15px auto;

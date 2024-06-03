@@ -61,6 +61,7 @@ const Vase = () => {
                             <img src={product.image} alt={product.name} />
                             <span className="heart-icon">♡</span>
                         </div>
+
                         <h2>{product.name}</h2>
                         <p>Price: ${product.price}</p>
                     </div>
