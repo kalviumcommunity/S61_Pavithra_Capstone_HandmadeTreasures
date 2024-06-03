@@ -60,7 +60,7 @@ const Logout = () => {
                             />
                         </div>
                         <button type="submit" className="signup-button">Sigin</button>
-                        <button type="submit" className="logout-button">Sigin</button>
+                        {/* <button type="submit" className="logout-button">Sigin</button> */}
                     </form>
                 </div>
             </div>

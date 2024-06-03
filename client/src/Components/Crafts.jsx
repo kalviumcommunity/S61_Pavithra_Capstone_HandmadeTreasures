@@ -43,13 +43,16 @@ const Crafts = () => {
             <div className="crafts-list">
                 {crafts.map((craft) => (
                     <div key={craft._id} className="craft-item">
-                        <img src={craft.image} alt={craft.name} />
+                        <div className="image-container">
+                            <img src={product.image} alt={product.name} />
+                            <span className="heart-icon">♡</span>
+                        </div>
                         <h2>{craft.name}</h2>
-                        <p>{craft.description}</p>
                         <p>Price: ${craft.price}</p>
                     </div>
                 ))}
             </div>
+            
         </div>
     );
 };
