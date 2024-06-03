@@ -23,7 +23,7 @@ const MainContainer = () => {
                         </Link>
                     </div>
                     <div className="category-item">
-                        <Link to="/crafts/papercrafts">
+                        <Link to="/crafts">
                             <img src={handicraftsImage} alt="Handicrafts" />
                             <p>Handicrafts</p>
                         </Link>
