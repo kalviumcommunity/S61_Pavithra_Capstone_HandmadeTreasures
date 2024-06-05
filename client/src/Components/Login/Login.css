@@ -98,15 +98,34 @@
     margin-bottom: 10px; 
 }
 
-/* Button hover effect */
 .login-button:hover {
     background-color: #C38DFA;
     background-color: #84dbef;  
 }
 
-/* Responsive styling for smaller screens */
 @media (max-width: 768px) {
     .login-form {
         padding: 20px; 
     }
+}
+/* Error message styling */
+.error-message {
+    color: red; /* Red color for error */
+    margin-bottom: 10px; /* Space below the error message */
+    text-align: center; /* Centered text */
+    font-size: 16px; /* Font size */
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background for visibility */
+    padding: 10px; /* Padding inside the error message */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Success message styling */
+.success-message {
+    color: green; /* Green color for success */
+    margin-bottom: 10px; /* Space below the success message */
+    text-align: center; /* Centered text */
+    font-size: 16px; /* Font size */
+    background-color: rgba(0, 255, 0, 0.1); /* Light green background for visibility */
+    padding: 10px; /* Padding inside the success message */
+    border-radius: 5px; /* Rounded corners */
 }

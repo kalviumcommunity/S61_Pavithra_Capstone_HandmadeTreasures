@@ -24,14 +24,14 @@ import OilPainting from './Components/Painting/OilPainting';
 import WatercolorPainting from './Components/Painting/WatercolorPainting';
 import Footer from './Components/Footer/footer';
 import Login from './Components/Login/Login';
-import Logout from './Components/Logout/Logout';
 import MainContainer from './Components/MainContainer/Container';
 import './App.css';
+import Signup from './Components/Logout/Signup';
 
 const App = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
-  const isLogoutPage = location.pathname === '/logout';
+  const isLogoutPage = location.pathname === '/Signup';
   const hideHomeAndMainContainer = isLoginPage || isLogoutPage;
 
   return (
@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/painting/oilpainting" element={<OilPainting />} />
         <Route path="/painting/watercolorpainting" element={<WatercolorPainting />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
+        <Route path="/Signup" element={<Signup />} />
       </Routes>
       {/* {!isLoginPage && <MainContainer />} */}
       {!hideHomeAndMainContainer && <MainContainer />}

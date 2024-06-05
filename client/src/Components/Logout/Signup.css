@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
 
-.logout-page {
+.Signup-page {
     height: 85vh;
     width: 100%;
     background-image: url('../../assets/pots.png');
@@ -13,7 +13,7 @@
     font-family: 'Klee One', cursive;
 }
 
-.logout-page::before {
+.Signup-page::before {
     content: '';
     position: absolute;
     top: 0;
@@ -24,7 +24,7 @@
     z-index: 2;
 }
 
-.logout-container {
+.Signup-container {
     position: relative;
     z-index: 2;
     display: flex;
@@ -35,7 +35,7 @@
 }
 
 /* Styling for the logout form */
-.logout-form {
+.Signup-form {
     background: rgba(246, 243, 243, 0.9);
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
@@ -45,7 +45,7 @@
 }
 
 /* Form heading */
-.logout-form h2 {
+.Signup-form h2 {
     margin-top: 0px;
     margin-bottom: 10px; /* Space below heading */
     text-align: center; /* Centered text */
@@ -98,8 +98,29 @@
 
 /* Responsive styling for smaller screens */
 @media (max-width: 768px) {
-    .logout-form {
+    .Signup-form {
         padding: 20px;
     }
 }
 
+/* Error message styling */
+.error-message {
+    color: red; /* Red color for error */
+    margin-bottom: 10px; /* Space below the error message */
+    text-align: center; /* Centered text */
+    font-size: 16px; /* Font size */
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background for visibility */
+    padding: 10px; /* Padding inside the error message */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Success message styling */
+.success-message {
+    color: green; /* Green color for success */
+    margin-bottom: 10px; /* Space below the success message */
+    text-align: center; /* Centered text */
+    font-size: 16px; /* Font size */
+    background-color: rgba(0, 255, 0, 0.1); /* Light green background for visibility */
+    padding: 10px; /* Padding inside the success message */
+    border-radius: 5px; /* Rounded corners */
+}
