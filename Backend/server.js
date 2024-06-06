@@ -3,12 +3,19 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const route = require('./routes');
-const userRoute=require('./User/userRoutes');
+const userRoute = require('./User/userRoutes');
 
 connectDB();
 const port = 3000;
 
 const app = express();
+
+// Middleware to set COOP and COEP headers
+app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    next();
+});
 
 app.use(express.json());
 app.use(cors());
@@ -21,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', route);
-app.use('/admin',userRoute);
+app.use('/admin', userRoute);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
