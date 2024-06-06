@@ -27,6 +27,7 @@ import Login from './Components/Login/Login';
 import MainContainer from './Components/MainContainer/Container';
 import './App.css';
 import Signup from './Components/Logout/Signup';
+import { AuthProvider } from "./contexts/authContext";
 
 const App = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const App = () => {
 
   return (
     // <>
+    <AuthProvider>
     <CartProvider>
       <Navbar />
       {/* {!isLoginPage && <Home />} */}
@@ -68,6 +70,7 @@ const App = () => {
       <Footer />
     {/* </> */}
     </CartProvider>
+    </AuthProvider>
     // </>
   );
 };
