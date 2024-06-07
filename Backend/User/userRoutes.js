@@ -1,6 +1,7 @@
 const express = require("express");
 const userRoute = express.Router();
 const Joi = require('joi');
+const bcrypt = require('bcryptjs');
 const UserModel = require('../User/userSchema');
 
 // Joi schema for user signup
@@ -17,7 +18,7 @@ const loginSchema = Joi.object({
 });
 
 // Route for user signup
-userRoute.post('/Signup', async (req, res) => {
+userRoute.post('/signup', async (req, res) => {
     try {
         // Validate request body
         const { error } = signupSchema.validate(req.body);
@@ -47,11 +48,11 @@ userRoute.post('/login', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        if (user.password !== password) {
+        const isPasswordMatch = await user.matchPassword(password);
+        if (!isPasswordMatch) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
         res.status(200).json({ message: "Login successful" });
-
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

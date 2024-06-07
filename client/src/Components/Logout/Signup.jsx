@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
     const [userName, setuserName] = useState('');
@@ -11,25 +14,51 @@ const Signup = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
 
-    const handleCreateAccount = async(e) => {
+    // const handleCreateAccount = async(e) => {
+    //     e.preventDefault();
+    //     // Add your account creation logic here
+    //     console.log('User Name:', userName, 'Email:', email, 'Password:', password);
+    //     try {
+    //         const response = await axios.post('http://localhost:3000/admin/Signup', {
+    //             userName,
+    //             email,
+    //             password
+    //         });
+    //         console.log(response.data);
+    //         setErrorMessage(''); // Clear the error message on successful login
+    //         setSuccessMessage('Signup successful!');
+    //         // navigate('/login');
+    //     } catch (error) {
+    //         console.error('Error signing up:', error.response.data.message);
+    //         setErrorMessage(error.response.data.message); // Set the error message
+    //         setSuccessMessage('');
+    //         }
+    // };
+    const handleSignup = async (e) => {
         e.preventDefault();
-        // Add your account creation logic here
-        console.log('User Name:', userName, 'Email:', email, 'Password:', password);
         try {
-            const response = await axios.post('http://localhost:3000/admin/Signup', {
+            // Create user in Firebase Authentication
+            const userCredential = await doCreateUserWithEmailAndPassword(email, password);
+            const firebaseUser = userCredential.user;
+
+            // Create user in your backend
+            const response = await axios.post('http://localhost:3000/admin/signup', {
                 userName,
                 email,
                 password
             });
-            console.log(response.data);
-            setErrorMessage(''); // Clear the error message on successful login
-            setSuccessMessage('Signup successful!');
-            // navigate('/login');
+
+            console.log("Backend response:", response.data);
+            setErrorMessage('');
+            setSuccessMessage('User created successfully!');
+            toast.success('User created successfully!');
+            navigate('/login');
         } catch (error) {
-            console.error('Error signing up:', error.response.data.message);
-            setErrorMessage(error.response.data.message); // Set the error message
+            console.error('Error signing up:', error);
+            setErrorMessage(error.response?.data?.message || 'Error signing up');
             setSuccessMessage('');
-            }
+            toast.error('Error signing up: ' + (error.response?.data?.message || 'Error signing up'));
+        }
     };
 
     return (
@@ -39,7 +68,7 @@ const Signup = () => {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 {successMessage && <p className="success-message">{successMessage}</p>}
                     <h2>Create an Account</h2>
-                    <form onSubmit={handleCreateAccount}>
+                    <form onSubmit={handleSignup}>
                         <div className="form-group">
                             <label>User Name</label>
                             <input 
@@ -75,6 +104,7 @@ const Signup = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
