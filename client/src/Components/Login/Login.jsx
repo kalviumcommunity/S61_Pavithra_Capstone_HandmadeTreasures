@@ -26,6 +26,8 @@ const Login = () => {
             setIsSigningIn(true);
             try {
                 console.log("Attempting to sign in with email and password...");
+                console.log("Email:", email);
+                console.log("Password:", password);
                 await doSignInWithEmailAndPassword(email, password);
                 console.log("Signed in successfully, sending login request to server...");
                 const response = await axios.post('http://localhost:3000/admin/login', {
@@ -40,6 +42,7 @@ const Login = () => {
                 // navigate('/'); 
             } catch (error) {
                 console.error('Error logging in:', error);
+                console.log('Error response:', error.response);
                 setErrorMessage(error.response?.data?.message || 'Error logging in');
                 setSuccessMessage('');
                 toast.error('Error logging in: ' + (error.response?.data?.message || 'Error logging in'));
