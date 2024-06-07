@@ -18,7 +18,7 @@ const loginSchema = Joi.object({
 });
 
 // Route for user signup
-userRoute.post('/signup', async (req, res) => {
+userRoute.post('/Signup', async (req, res) => {
     try {
         // Validate request body
         const { error } = signupSchema.validate(req.body);
