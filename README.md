@@ -20,3 +20,7 @@ The main goal is to empower creators and artisans by providing them with a platf
 
 ### Tech Stack
 HTML,CSS,JavaScript,Node.js,Express.js,MongoDB.
+
+## Deployment link
+
+<https://6662baec575e1ad7bfce49c3--subtle-cajeta-5f7a1b.netlify.app/>

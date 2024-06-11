@@ -37,24 +37,8 @@ const loginSchema = Joi.object({
 });
 
 // Route for user signup
-// userRoute.post('/signup', async (req, res) => {
-//     try {
-//         // Validate request body
-//         const { error } = signupSchema.validate(req.body);
-//         if (error) {
-//             return res.status(400).json({ message: error.details[0].message });
-//         }
-
-//         const { userName, email, password } = req.body;
-//         const newUser = await UserModel.create({ userName, email, password });
-//         res.status(201).json({ message: 'User created successfully', user: newUser });
-//     } catch (error) {
-//         res.status(400).json({ message: error.message });
-//     }
-// });
-
-// Route for user signup
 userRoute.post('/signup', upload.single('profilePicture'), async (req, res) => {
+
     try {
         // Validate request body
         const { error } = signupSchema.validate(req.body);
