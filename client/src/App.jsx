@@ -38,7 +38,8 @@ const App = () => {
   const isLogoutPage = location.pathname === '/Signup';
   const isAddPostPage = location.pathname === '/add';
   const isProductsPage = location.pathname === '/productsPage';
-  const hideHomeAndMainContainer = isLoginPage || isLogoutPage || isAddPostPage || isProductsPage;
+  const isEditProductPage = location.pathname.startsWith('/update/');
+  const hideHomeAndMainContainer = isLoginPage || isLogoutPage || isAddPostPage || isProductsPage || isEditProductPage;
 
   return (
     // <>

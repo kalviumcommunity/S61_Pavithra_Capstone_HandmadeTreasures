@@ -57,66 +57,68 @@ export default function EditProductPage() {
         try {
             const response = await axios.put(`http://localhost:3000/api/update/${id}`, formData);
             console.log('Product updated successfully:', response.data);
-            navigate('/productsPage'); 
+            navigate('/productsPage');
         } catch (error) {
             console.error('Error updating product:', error);
         }
     };
 
     return (
-        <div className="container">
-            <h2 className="text-center">Edit Product</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label className="form-label">Image:</label>
-                    <input type="text" className="form-control" name="image" onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Name:</label>
-                    <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Category:</label>
-                    <select className="form-control" name="category" value={formData.category} onChange={handleChange} required>
-                        <option value="">Select Category</option>
-                        <option value="crafts">Crafts</option>
-                        <option value="jewellery">Jewellery</option>
-                        <option value="pottery">Pottery</option>
-                        <option value="painting">Painting</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Subcategory:</label>
-                    <select className="form-control" name="subcategory" value={formData.subcategory} onChange={handleChange}>
-                        <option value="">Select Subcategory</option>
-                        <option value="Candles">Candles</option>
-                        <option value="Soap">Soap</option>
-                        <option value="PaperCrafts">Paper Crafts</option>
-                        <option value="WoodenItems">Wooden Items</option>
-                        <option value="Necklace">Necklace</option>
-                        <option value="Earring">Earring</option>
-                        <option value="Bangles">Bangles</option>
-                        <option value="JewellerySet">Jewellery Set</option>
-                        <option value="CanvasPainting">Canvas Painting</option>
-                        <option value="PaperPainting">Paper Painting</option>
-                        <option value="OilPainting">Oil Painting</option>
-                        <option value="WatercolorPainting">Watercolor Painting</option>
-                        <option value="Mug">Mug</option>
-                        <option value="Bowl">Bowl</option>
-                        <option value="Planter">Planter</option>
-                        <option value="Vase">Vase</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Description:</label>
-                    <textarea className="form-control" name="description" value={formData.description} onChange={handleChange} required></textarea>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Price:</label>
-                    <input type="number" className="form-control" name="price" value={formData.price} onChange={handleChange} required />
-                </div>
-                <button type="submit" className="btn">Update Product</button>
-            </form>
+        <div className='pro'>
+            <div className="container">
+                <h2 className="text-center">Edit Product</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label className="form-label">Image:</label>
+                        <input type="text" className="form-control" name="image" onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Name:</label>
+                        <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Category:</label>
+                        <select className="form-control" name="category" value={formData.category} onChange={handleChange} required>
+                            <option value="">Select Category</option>
+                            <option value="crafts">Crafts</option>
+                            <option value="jewellery">Jewellery</option>
+                            <option value="pottery">Pottery</option>
+                            <option value="painting">Painting</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Subcategory:</label>
+                        <select className="form-control" name="subcategory" value={formData.subcategory} onChange={handleChange}>
+                            <option value="">Select Subcategory</option>
+                            <option value="Candles">Candles</option>
+                            <option value="Soap">Soap</option>
+                            <option value="PaperCrafts">Paper Crafts</option>
+                            <option value="WoodenItems">Wooden Items</option>
+                            <option value="Necklace">Necklace</option>
+                            <option value="Earring">Earring</option>
+                            <option value="Bangles">Bangles</option>
+                            <option value="JewellerySet">Jewellery Set</option>
+                            <option value="CanvasPainting">Canvas Painting</option>
+                            <option value="PaperPainting">Paper Painting</option>
+                            <option value="OilPainting">Oil Painting</option>
+                            <option value="WatercolorPainting">Watercolor Painting</option>
+                            <option value="Mug">Mug</option>
+                            <option value="Bowl">Bowl</option>
+                            <option value="Planter">Planter</option>
+                            <option value="Vase">Vase</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Description:</label>
+                        <textarea className="form-control" name="description" value={formData.description} onChange={handleChange} required></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Price:</label>
+                        <input type="number" className="form-control" name="price" value={formData.price} onChange={handleChange} required />
+                    </div>
+                    <button type="submit" className="btn">Update Product</button>
+                </form>
+            </div>
         </div>
     );
 }
