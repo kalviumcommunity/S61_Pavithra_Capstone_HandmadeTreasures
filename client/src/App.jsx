@@ -28,12 +28,17 @@ import MainContainer from './Components/MainContainer/Container';
 import './App.css';
 import Signup from './Components/Logout/Signup';
 import { AuthProvider } from "./contexts/authContext";
+import AddEntitiesPage from './Components/Entities/AddEntities';
+import ProductsPage from './Components/Entities/ProductsPage';
+import EditProductPage from './Components/Entities/EditProductPage';
 
 const App = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
   const isLogoutPage = location.pathname === '/Signup';
-  const hideHomeAndMainContainer = isLoginPage || isLogoutPage;
+  const isAddPostPage = location.pathname === '/add';
+  const isProductsPage = location.pathname === '/productsPage';
+  const hideHomeAndMainContainer = isLoginPage || isLogoutPage || isAddPostPage || isProductsPage;
 
   return (
     // <>
@@ -64,14 +69,18 @@ const App = () => {
         <Route path="/painting/watercolorpainting" element={<WatercolorPainting />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
+        {/* <Routes> */}
+        <Route path="/productsPage" element={<ProductsPage />} />
+        <Route path="/add" element={<AddEntitiesPage />} />
+        <Route path="/update/:id" element={<EditProductPage />} />
+      {/* </Routes> */}
       </Routes>
       {/* {!isLoginPage && <MainContainer />} */}
       {!hideHomeAndMainContainer && <MainContainer />}
       <Footer />
     {/* </> */}
     </CartProvider>
-    </AuthProvider>
-    // </>
+    </AuthProvider>    
   );
 };
 

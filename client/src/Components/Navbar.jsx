@@ -13,6 +13,7 @@ const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
     const { cartItems, removeFromCart } = useContext(CartContext);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
 
     const handleDropdownToggle = (category) => {
         setOpenDropdown(openDropdown === category ? null : category);
@@ -26,7 +27,11 @@ const Navbar = () => {
         // Logic for buying now, e.g., redirect to checkout page with the item
         console.log("Buying now:", item);
     };
-    
+
+    const toggleLoginDropdown = () => {
+        setIsLoginDropdownOpen(!isLoginDropdownOpen);
+    };
+
     return (
         <>
             <nav className="navbar">
@@ -44,9 +49,18 @@ const Navbar = () => {
                         </button>
                     </div>
                     <div className="icons">
-                        <Link to="/login" className="login-icon">
+                        <div className="login-icon" onClick={toggleLoginDropdown}>
                             <img src={loginIcon} alt="Login" />
-                        </Link>
+                            {isLoginDropdownOpen && (
+                                <div className="login-dropdown">
+                                    <div className="dropdown-content">
+                                        <Link to="/login" className="dropdown-item">Login</Link>
+                                        <Link to="/add" className="dropdown-item">AddPost</Link>
+                                        <Link to="/productsPage" className="dropdown-item">ProductsPage</Link>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                         <div className="cart-icon" onClick={toggleCart}>
                             <img src={cartIcon} alt="Cart" />
                         </div>
