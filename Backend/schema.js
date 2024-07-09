@@ -14,7 +14,12 @@ const productSchema = new Schema({
         enum: ["Candles", "Soap", "PaperCrafts", "WoodenItems", "Necklace", "Earring", "Bangles", "JewellerySet", "CanvasPainting", "PaperPainting", "OilPainting", "WatercolorPainting", "Mug", "Bowl", "Planter", "Vase"],
     },
     description: { type: String, required: true },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true },
+    admin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "admin",
+        required: true,
+    }
     
 });
 

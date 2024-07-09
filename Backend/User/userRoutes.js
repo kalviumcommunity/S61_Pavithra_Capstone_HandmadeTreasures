@@ -1,7 +1,7 @@
 const express = require("express");
 const userRoute = express.Router();
 const Joi = require('joi');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const UserModel = require('../User/userSchema');
 const multer = require('multer');
 const path = require('path');
@@ -65,10 +65,10 @@ userRoute.post('/signup', upload.single('profilePicture'), async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).json({ message: 'User created successfully', user: newUser });
+        return res.status(201).json({ message: 'User created successfully', user: newUser });
     } catch (error) {
         console.error('Error signing up user:', error);
-        res.status(500).json({ message: 'Error signing up user' });
+        return res.status(500).json({ message: 'Error signing up user' });
     }
 });
 
@@ -93,9 +93,12 @@ userRoute.post('/login', async (req, res) => {
         const token = jwt.sign({ userId: user._id }, secretkey, { expiresIn: '1h' });
 
         res.cookie('token', token, { httpOnly: true });
-        res.status(200).json({ message: "Login successful", token: token }); // Include token in response body
+        // res.status(200).json({ message: "Login successful", token: token }); // Include token in response body
+        res.status(200).json({ message: "Login successful", token, isAdmin: user.isAdmin });
+
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        console.error('Error during login:', error);
+        return res.status(500).json({ message: 'Error during login' });
     }
 });
 
@@ -103,9 +106,10 @@ userRoute.post('/login', async (req, res) => {
 userRoute.post('/logout', async (req, res) => {
     try {
         res.clearCookie('token');
-        res.status(200).json({ message: 'Logout successful' });
+        return res.status(200).json({ message: 'Logout successful' });
     } catch (error) {
-        res.status(500).send({ error: "Internal server error" });
+        console.error('Error during logout:', error);
+        return res.status(500).send({ error: "Internal server error" });
     }
 });
 

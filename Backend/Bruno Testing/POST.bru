@@ -5,15 +5,20 @@ meta {
 }
 
 post {
-  url: http://localhost:3000/admin/Signup
+  url: http://localhost:3000/api/create
   body: json
   auth: none
 }
 
 body:json {
   {
-    "userName": "Pavi",
-      "email": ".yugandhar1979@gmail.com",
-      "password": "1979"
+      "image": "https://example.com/images/product1.jpg",
+      "name": "Handmade Candle",
+      "category": "crafts",
+      "subcategory": "Candles",
+      "description": "A beautifully handmade candle made from natural ingredients.",
+      "price": 25.99,
+    "admin": "3355598967845331212"
   }
+  
 }

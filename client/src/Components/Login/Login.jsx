@@ -7,9 +7,9 @@ import {
 } from "../../firebase/auth";
 import { useAuth } from "../../contexts/authContext/index";
 import { useNavigate, Navigate } from 'react-router-dom';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css'; 
+// import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 
 const Login = () => {
@@ -26,44 +26,129 @@ const Login = () => {
         setSelectedFile(e.target.files[0]);
     };
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    // const handleLogin = async (e) => {
+    //     e.preventDefault();
+    //     if (!isSigningIn) {
+    //         setIsSigningIn(true);
+    //         try {
+    //             console.log("Attempting to sign in with email and password...");
+    //             console.log("Email:", email);
+    //             console.log("Password:", password);
+    //             await doSignInWithEmailAndPassword(email, password);
+    //             console.log("Signed in successfully, sending login request to server...");
+    //             const response = await axios.post('http://localhost:3000/admin/login', {
+    //                 email,
+    //                 password
+    //             });
+    //             console.log("Server response:", response.data);
+
+    //             // Check if token is present in the response data
+    //             if (response.data.token) {
+    //                 // Set cookies on successful login
+    //                 Cookies.set('email', email);
+    //                 Cookies.set('token', response.data.token); // Set the token cookie
+    //                 console.log('Token set in cookies:', response.data.token);
+    //             } else {
+    //                 console.error('Token not found in server response');
+    //             }
+
+    //             setErrorMessage(''); // Clear the error message on successful login
+    //             setSuccessMessage('Login successful!');
+    //             setUserLogIn(true);
+    //             toast.success('Login successful!');
+
+    //             // navigate('/'); 
+    //         } catch (error) {
+    //             console.error('Error logging in:', error);
+    //             console.log('Error response:', error.response);
+    //             setErrorMessage(error.response?.data?.message || 'Error logging in');
+    //             setSuccessMessage('');
+    //             toast.error('Error logging in: ' + (error.response?.data?.message || 'Error logging in'));
+    //         } finally {
+    //             setIsSigningIn(false);
+    //         }
+    //     }
+    // };
+
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
+            console.log("Email:", email);
+            console.log("Password:", password);
+
             try {
-                console.log("Attempting to sign in with email and password...");
-                console.log("Email:", email);
-                console.log("Password:", password);
-                await doSignInWithEmailAndPassword(email, password);
-                console.log("Signed in successfully, sending login request to server...");
-                const response = await axios.post('http://localhost:3000/admin/login', {
-                    email,
-                    password
-                });
-                console.log("Server response:", response.data);
-                
-                // Check if token is present in the response data
-                if (response.data.token) {
-                    // Set cookies on successful login
-                    Cookies.set('email', email);
-                    Cookies.set('token', response.data.token); // Set the token cookie
-                    console.log('Token set in cookies:', response.data.token);
+                // await doSignInWithEmailAndPassword(email, password);
+                console.log("Firebase sign-in successful");
+
+                // Fetch admin details from the database
+                const response = await fetch("http://localhost:3000/api/admin/profile");
+                console.log("response", response);
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        console.log('User not found in admin profile. User is not an admin.');
+                    } else {
+                        throw new Error('Failed to fetch admin details');
+                    }
                 } else {
-                    console.error('Token not found in server response');
+                    const adminDetails = await response.json();
+                    console.log("adminDetails", adminDetails);
+
+                    if (Array.isArray(adminDetails.data)) {
+                        const matchedAdmin = adminDetails.data.find(
+                            (admin) => email === admin.email 
+                            && password === admin.password
+                        );
+
+                        if (matchedAdmin) {
+                            console.log("The data matches.");
+                            localStorage.setItem("adminId", matchedAdmin._id);
+                            localStorage.setItem("adminEmail", matchedAdmin.email);
+                            localStorage.setItem("adminPassword", matchedAdmin.password);
+                            localStorage.setItem("IsAdmin", matchedAdmin.isAdmin);
+
+                            toast.success("Successfully logged in as Admin!");
+                            console.log("Successfully logged in as Admin");
+                            return;
+                        } else {
+                            console.log("No matching admin found.");
+                        }
+                    } else {
+                        console.log("adminDetails is not an array or does not have 'data' array:", adminDetails);
+                    }
                 }
 
-                setErrorMessage(''); // Clear the error message on successful login
-                setSuccessMessage('Login successful!');
-                setUserLogIn(true);
-                toast.success('Login successful!');
+                // If the input details don't match admin, try user login
+                const userResponse = await fetch("http://localhost:3000/admin/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
 
-                // navigate('/'); 
+                if (userResponse.ok) {
+                    const userData = await userResponse.json();
+                    localStorage.setItem("token", userData.token);
+                    setUserLogIn(true);
+
+                    if (userData.isAdmin) {
+                        localStorage.setItem('IsAdmin', userData.isAdmin);
+                        console.log('He is an admin');
+                    } else {
+                        localStorage.setItem('IsAdmin', false);
+                        console.log('He is not an admin');
+                    }
+
+                    toast.success(userData.message || "Logged in successfully!");
+                } else {
+                    const errorData = await userResponse.json();
+                    throw new Error(errorData.message || "Failed to log in");
+                }
             } catch (error) {
-                console.error('Error logging in:', error);
-                console.log('Error response:', error.response);
-                setErrorMessage(error.response?.data?.message || 'Error logging in');
-                setSuccessMessage('');
-                toast.error('Error logging in: ' + (error.response?.data?.message || 'Error logging in'));
+                console.error("Error:", error);
+                toast.error(error.message || "An error occurred");
             } finally {
                 setIsSigningIn(false);
             }
@@ -96,7 +181,7 @@ const Login = () => {
                 console.log("Signed in with Google successfully!");
                 setUserLogIn(true);
                 toast.success('Signed in with Google successfully!');
-                
+
                 // Set cookies on successful Google login
                 Cookies.set('email', email);
                 // Cookies.set('token', response.data.token); // Assuming you handle Google sign-in token
@@ -144,9 +229,9 @@ const Login = () => {
                         </div>
                         <div className="form-group">
                             <label>Profile Picture</label>
-                            <input 
-                                type="file" 
-                                onChange={handleFileChange} 
+                            <input
+                                type="file"
+                                onChange={handleFileChange}
                             />
                         </div>
                         {userLoggedIn ? (
@@ -163,9 +248,10 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer /> 
+            <ToastContainer />
         </div>
     );
 };
 
 export default Login;
+

@@ -4,6 +4,10 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const route = require('./routes');
 const userRoute = require('./User/userRoutes');
+const bodyParser = require('body-parser');
+// const adminModel = require('./Admin/adminSchema');
+const adminRoutes = require('./Admin/adminRoutes');
+const bcrypt =require('bcrypt');
 
 connectDB();
 const port = 3000;
@@ -19,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.json({
@@ -29,6 +34,8 @@ app.get('/', (req, res) => {
 
 app.use('/api', route);
 app.use('/admin', userRoute);
+app.use('/api/admin', adminRoutes);
+
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

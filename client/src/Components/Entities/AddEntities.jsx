@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import './AddEntities.css';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './AddEntities.css';
 
 export default function AddEntitiesPage() {
     const navigate = useNavigate();
@@ -13,8 +15,22 @@ export default function AddEntitiesPage() {
         category: '',
         subcategory: '',
         description: '',
-        price: ''
+        price: '',
+        admin: ''
     });
+
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        // Check if the user is an admin
+        const adminStatus = localStorage.getItem('IsAdmin') === 'true';
+        setIsAdmin(adminStatus);
+
+        if (!adminStatus) {
+            // Redirect to home if not an admin
+            navigate('/');
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,34 +40,42 @@ export default function AddEntitiesPage() {
         }));
     };
 
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-    //     const reader = new FileReader();
-    //     reader.onloadend = () => {
-    //         setFormData(prevState => ({
-    //             ...prevState,
-    //             image: reader.result
-    //         }));
-    //     };
-    //     if (file) {
-    //         reader.readAsDataURL(file);
-    //     }
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        const adminId = localStorage.getItem('adminId'); // Ensure this is set correctly
+        const payload = {
+            ...formData,
+            admin: adminId
+        };
+    
+        console.log('Submitting form data:', payload);
+    
         try {
-            const response = await axios.post('http://localhost:3000/api/create', formData);
+            const response = await axios.post('http://localhost:3000/api/create', payload);
             console.log('Product added successfully:', response.data);
             setPopupMsg('Product added successfully!');
+            toast.success('Product added successfully!');
         } catch (error) {
             console.error('Error adding product:', error);
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                console.error('Error response status:', error.response.status);
+                console.error('Error response headers:', error.response.headers);
+                toast.error('Error adding product. Please try again.');
+            }
         }
     };
+    
+
+    if (!isAdmin) {
+        return null; // Don't render anything if the user is not an admin
+    }
 
     return (
         <div className='pro'>
-            <div className="container">
+            <div className="Container">
+                {popupMsg && <p className="success-message">{popupMsg}</p>}
                 <h2 className="text-center">Add New Product</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -104,7 +128,7 @@ export default function AddEntitiesPage() {
                     </div>
                     <button type="submit" className="btn">Add Product</button>
                 </form>
-                {popupMsg && <div className="popup">{popupMsg}</div>}
+                <ToastContainer />
             </div>
         </div>
     );
