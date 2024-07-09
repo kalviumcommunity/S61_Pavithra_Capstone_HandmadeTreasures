@@ -1,4 +1,4 @@
-.container {
+.Container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -55,4 +55,14 @@ textarea.form-control {
 .error-message {
     color: #dc3545;
     margin-top: 5px;
+}
+
+/* Success message styling */
+.success-message {
+    color: green; 
+    text-align: center;
+    font-size: 16px; 
+    background-color: rgba(0, 255, 0, 0.1); 
+    padding: 10px; 
+    border-radius: 5px; 
 }
