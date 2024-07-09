@@ -27,10 +27,9 @@ export default function AddEntitiesPage() {
         setIsAdmin(adminStatus);
 
         if (!adminStatus) {
-            // Redirect to home if not an admin
-            navigate('/');
+            toast.error('User does not have access to add post');
         }
-    }, [navigate]);
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,6 +41,11 @@ export default function AddEntitiesPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!isAdmin) {
+            toast.error('User does not have access to add post');
+            return;
+        }
         
         const adminId = localStorage.getItem('adminId'); // Ensure this is set correctly
         const payload = {
@@ -66,11 +70,6 @@ export default function AddEntitiesPage() {
             }
         }
     };
-    
-
-    if (!isAdmin) {
-        return null; // Don't render anything if the user is not an admin
-    }
 
     return (
         <div className='pro'>
