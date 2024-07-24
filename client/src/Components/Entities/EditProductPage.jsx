@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 // import './EditProductPage.css';
-
+// import './AddEntities.css';
 export default function EditProductPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -65,7 +65,7 @@ export default function EditProductPage() {
 
     return (
         <div className='pro'>
-            <div className="container">
+            <div className="Container">
                 <h2 className="text-center">Edit Product</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
